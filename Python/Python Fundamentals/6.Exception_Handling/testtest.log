@@ -1,0 +1,23 @@
+2023-03-14 08:03:01,273this is my info log
+2023-03-14 08:03:01,273this is my warning log
+2023-03-14 08:03:01,274gthis is my error log
+2023-03-14 08:03:31,112this is my info log
+2023-03-14 08:03:31,113this is my warning log
+2023-03-14 08:03:31,113gthis is my error log
+2023-03-14 08:04:11,000this is my info log
+2023-03-14 08:04:11,001this is my warning log
+2023-03-14 08:04:11,001gthis is my error log
+2023-03-14 08:12:01,092this is my info log
+2023-03-14 08:12:01,093this is my warning log
+2023-03-14 08:12:01,094gthis is my error log
+2023-03-14 08:12:58,229ERRORgthis is my error log
+2023-03-14 08:13:12,836ERRORgthis is my error log
+2023-03-14 08:35:54,745INFOthis is a start of my code , ia m trying to enter 4 and 5
+2023-03-14 08:35:54,747INFOexecuted Succesfully
+2023-03-14 08:36:44,361INFOthis is a start of my code , ia m trying to enter 4 and 0
+2023-03-14 08:36:44,361ERRORerror has happened
+2023-03-14 08:36:44,361ERRORException occureddivision by zero
+Traceback (most recent call last):
+  File "C:\Users\Anil Kamat\AppData\Local\Temp\ipykernel_1760\1100471984.py", line 4, in dividebyzero
+    div=a/b
+ZeroDivisionError: division by zero
