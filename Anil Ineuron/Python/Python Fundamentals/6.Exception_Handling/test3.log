@@ -1,0 +1,9 @@
+2023-12-14 17:46:45,437INFOthis is a start of my code , ia m trying to enter 4 and 5
+2023-12-14 17:46:45,438INFOexecuted Succesfully
+2023-12-14 17:46:48,797INFOthis is a start of my code , ia m trying to enter 4 and 0
+2023-12-14 17:46:48,798ERRORerror has happened
+2023-12-14 17:46:48,798ERRORException occureddivision by zero
+Traceback (most recent call last):
+  File "/tmp/ipykernel_286/2736550217.py", line 6, in dividebyzero
+    div=a/b
+ZeroDivisionError: division by zero

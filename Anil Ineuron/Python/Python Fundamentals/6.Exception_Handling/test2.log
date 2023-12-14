@@ -1,0 +1,14 @@
+INFO:root:this is my info log
+WARNING:root:this is my warning log
+ERROR:root:gthis is my error log
+INFO:root:this is a start of my code , ia m trying to enter 4 and 5
+INFO:root:executed Succesfully
+INFO:root:this is a start of my code , ia m trying to enter 4 and 0
+ERROR:root:error has happened
+ERROR:root:Exception occureddivision by zero
+Traceback (most recent call last):
+  File "/tmp/ipykernel_499/2736550217.py", line 6, in dividebyzero
+    div=a/b
+ZeroDivisionError: division by zero
+INFO:root:this is a start of my code , ia m trying to enter 4 and 5
+INFO:root:executed Succesfully
