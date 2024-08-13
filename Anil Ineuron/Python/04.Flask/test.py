@@ -1,50 +1,74 @@
-from flask import  Flask  , request , jsonify
-import sqlite3
-import pymongo
-from pymongo import MongoClient
-app =  Flask(__name__)
+# MUST REFER TO API_FLASK.ipynb FILE BEFORE OPENING THIS FILE
 
-# to reach out we have to create route
-# @act as decorator
-@app.route('/xyz',methods = ['GET','POST'])
+from flask import Flask, request, jsonify
+
+app = Flask(__name__)  #object of flask class
+
+
+# Defining a route '/xyz' that will accept both GET and POST methods
+# Basically route expose the function to the outer world
+@app.route('/xyz', methods=['GET', 'POST'])
 def test():
-    if(request.method == 'POST'):
+    if request.method == 'POST':  # Checks if the incoming request is a POST request.
+        # Extracts values associated with the keys 'num1' and 'num2' from the JSON data sent in the POST request:
         a = request.json['num1']
         b = request.json['num2']
         result = a + b
         return jsonify(str(result))
 
-@app.route('/sql', methods = ['GET','POST'])
-def sql_fetch():
-    conn = sqlite3.connect('C:\\Users\\anilk\\Documents\\api.db')
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM employees")
-    rows = cursor.fetchall()
-    cursor.close()
-    conn.close()
-    return jsonify({'data': rows})
 
-@app.route('/mongo' , methods = ['GET','POST'])
-def mongo_fetch():
-    try:
-        client = MongoClient("mongodb+srv://mongo:mongo@cluster0.ubeiz69.mongodb.net/test?retryWrites=true&w=majority")
-        db = client.test
-        db2 = client["AnilKAMAT"]
-        document1 = db2["My_DATA"]
-        data1 = list(document1.find())
-        for doc in data1:
-            doc['_id'] = str(doc['_id'])
-        # Convert cursor to list of documents
-        client.close()
-        return jsonify({'data': data1})
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
-#GET AND POST botSEND DATA TO REFERENCE SYSTEM, BUT IN  different way
-# in get our data we are sending is exposed but in post data we are sending is not exposed
+@app.route('/abc/sudh', methods=['POST'])
+def test1():
+    if (request.method == 'POST'):
+        a = request.json['num3']
+        b = request.json['num4']
+        result = a + b
+        return jsonify(str(result))
+
+
+@app.route('/abc/sudh/kumar', methods=['POST'])
+def test2():
+    if (request.method == 'POST'):
+        a = request.json['num4']
+        b = request.json['num5']
+        result = a + b
+        return jsonify(str(result))
+
+
+@app.route('/abcxyz', methods=['POST'])
+def test3():
+    if (request.method == 'POST'):
+        a = request.json['sudh']
+        b = request.json['kumar']
+        result = a + b
+        return jsonify(str(result))
+
+
+# Wrong way to write a function with GET method:
+# To call your function from a web browser, you'll need to make a GET request to the /nir endpoint. However,
+# the way your function is currently structured expects JSON data in the request body, which is typically sent in a
+# POST request, not a GET request.
+# @app.route('/nir', methods=['GET'])
+# def test4():
+#     if (request.method == 'GET'):
+#         a = request.json['sudh']
+#         b = request.json['kumar']
+#         result = a + b
+#         return jsonify(str(result))
+
+# Correct way to write a function with GET method:
+@app.route('/nir', methods=['GET'])
+def test4():
+    if request.method == 'GET':
+        a = request.args.get('sudh')  # Retrieves the value of the 'sudh' parameter from the query string.
+        b = request.args.get('kumar')  # Retrieves the value of the 'kumar' parameter from the query string.
+        result = int(a) + int(b)  # The values are added together, converted to integers, and stored in result
+        return jsonify(str(result))  # result is returned as a JSON response.
+
+
+# Ensures that the Flask application runs only when the script is executed directly, not when imported as a module.
 if __name__ == '__main__':
-    app.run() #this will keep my server uo running
+    app.run()  # Running the Flask application
 
-#this is constructor call of python main function
-
-# Task 1 : write a function to fetch data from sql table via api
-# task 2 : write a function to fetch a data from mongodb table
+"""1 . write a function to fetch data from sql table via api 
+2 . write a functoin to fetch a data from mongodb table """
